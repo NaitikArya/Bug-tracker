@@ -50,19 +50,19 @@
   opacity: 0.9;
 }
 
-/* --------- Issues Styles --------- */
-.issue-card-container {
+/* --------- Card Styles --------- */
+.card-container {
   width: 100%;
   margin-top: 50px;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-.issue-card-container .header {
+.card-container .header {
   font-size: 1.75rem;
   color: var(--primary);
 }
-.issue-card {
+.card {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -70,11 +70,11 @@
   border: 1px var(--primary) solid;
   border-radius: 5px;
 }
-.issue-card .title {
+.card .title {
   font-size: 1.2rem;
   font-style: bold;
 }
-.issue-card .issue-card-details {
+.card .card-details {
   width: 100%;
   padding: 2rem;
   display: flex;
@@ -84,10 +84,10 @@
   border-radius: inherit;
   transition: all ease-in-out 200ms;
 }
-.issue-card .issue-card-details:hover {
+.card .card-details:hover {
   background-color: var(--secondary);
 }
-.issue-card .issue-card-button {
+.card .card-button {
   font-size: 1.2rem;
   width: 75px;
   height: inherit;
@@ -97,7 +97,7 @@
   border-radius: 0 4px 4px 0;
   transition: all ease-in-out 200ms;
 }
-.issue-card .issue-card-button:hover {
+.card .card-button:hover {
   background-color: inherit;
   color: var(--primary);
 }
@@ -124,7 +124,7 @@
   color: var(--primary);
 }
 
-/* Old Code */
+/* --------- Old Code --------- */
 .container-1 .submit-button {
   width: 7em;
   height: 40px;
@@ -187,7 +187,7 @@
 }
 /* issue detail link is used on a tag this represent issue name in issue.php file
 this link redirect us on issuedetail.php file*/
-#issue-detail-link {
+#detail-link {
   text-decoration: none;
   color: black;
 }
