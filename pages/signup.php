@@ -1,4 +1,5 @@
 <?php
+// from this file User can register him/her self in our application  
 if (isset($_POST['submit'])) {
     include 'connection.php';
     $obj = new database_connection();
@@ -7,9 +8,9 @@ if (isset($_POST['submit'])) {
     $email = $_POST['Email'];
     $password = md5($_POST['password']);
 
-    // $conn=mysqli_connect('localhost','root','','registration');
 
-    //select statement to check if email is repeated
+
+    //select statement to check if user name is repeated
 
     $select = "SELECT username FROM user";
     $result = $obj->query($select);
