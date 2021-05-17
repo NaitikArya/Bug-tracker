@@ -125,19 +125,55 @@
 }
 
 /* --------- Old Code --------- */
-.container-1 .submit-button {
-  width: 7em;
-  height: 40px;
-  margin-top: 20px;
-  border-style: none;
-  border-radius: 20px;
-  background-color: rgb(78, 65, 146);
-  display: block;
-  margin-left: 53%;
-  font-size: 20px;
-  color: aliceblue;
+.user-container {
+  font-size: 1.5rem;
+  width: 100%;
+  margin-top: 50px;
+  padding: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
 }
 
+.user-container .image {
+  font-size: 5rem;
+  text-align: center;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: var(--secondary);
+}
+
+.user-container .details {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+
+.user-container .details > div {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  border: 3px var(--primary) solid;
+  border-radius: 10px;
+}
+
+.user-container .details div .title {
+  font-weight: bold;
+}
+
+/* --------- Old Code --------- */
 .resolve-button {
   width: 7em;
   height: 40px;
@@ -153,27 +189,6 @@
   color: aliceblue;
 }
 
-/* user div1,  user div2 is usedin div page */
-.container-1 #user-div1 {
-  display: flex;
-  height: 15em;
-  justify-content: center;
-  align-items: center;
-}
-.container-1 #user-div2 {
-  display: flex;
-  width: 70%;
-  height: 40px;
-  margin-top: 30px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 4px;
-  padding-left: 10px;
-  padding-right: 10px;
-  justify-content: space-between;
-  border: 2px solid;
-  border-radius: 25px;
-}
 /* resolve reply is text area tag in rsolve.php file*/
 .container-1 .resolve-reply {
   width: 100%;
