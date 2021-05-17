@@ -14,9 +14,8 @@
 <body>
 
     <?php include '../components/menubar.php'; ?>
-
     <div class="container">
-        <div class="issue-card-container">
+        <div class="card-container">
             <div class="header">
                 Issues
             </div>
@@ -25,15 +24,15 @@
             $issue = 'Issue Name';
             foreach ($a as $value) {
             ?>
-                <div class="issue-card">
-                    <div class="issue-card-details">
+                <div class="card">
+                    <div class="card-details">
                         <div class="title" href="issuedetail.php">
                             <?php echo $issue ?>
                         </div>
                         <div class="start-date">Start:dd/mm/yy</div>
                         <div class="end-date">End:dd/mm/yy</div>
                     </div>
-                    <button class="issue-card-button">
+                    <button class="card-button">
                         <i class="fas fa-trash"></i>
                     </button>
                     </button>
