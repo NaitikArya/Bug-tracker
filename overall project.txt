@@ -1,0 +1,32 @@
+Database table ->
+    1) user
+    2)projects
+    3)individual projects
+
+        user table field ->
+            1. user id 
+            2. name
+            3. email
+            4. pass
+
+        projects table field ->
+            1. project name
+            2. start date 
+            3. end date
+            4. prj user [array]
+            5. prj manager
+
+        individual projects field ->
+            1. issue name
+            2. start date
+            3. end date
+            4. priority 
+            5. summary
+            6. issue assign to
+            7. status
+
+create table user(userId int primary key, username varchar(100) not null, email varchar(255) not null,password BINARY(64)not null, projects int[]);
+
+create table projects(projectId int primary key, project_name varchar(100) not null, startDate Date not null,endDate Date, admin int not null );
+
+create table issues(issueId int primary key, issue_name varchar(100)not null, issue_summary varchar(255),startDate date not null, endDate date not null, priority int not null, status varchar(10), assignedT

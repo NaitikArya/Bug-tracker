@@ -1,0 +1,344 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', sans-serif;
+}
+/* Nav style */
+nav{
+    display: flex;
+    width: 100%;
+    height: 70px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(78 65 146);
+    box-shadow: 0 1px 2px rgba(0,0,0,.19), 0 3px 5px rgba(0,0,0,.23);
+    position: sticky;
+	top: 0;
+}
+nav .logo{
+    font-size: 1.5em;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: aliceblue;
+}
+.nav-links{
+    display: flex;
+    font-size: 1em;
+    justify-content: space-around;
+    width: 35%;
+    height: 100%;
+    align-items: center;
+    color: aliceblue;
+}
+.nav-links li{
+    margin-right: 1em;
+    list-style: none;
+}
+.nav-links a{
+    display: block;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    color: aliceblue;
+    width: 100%;
+    text-transform: uppercase;
+    /*border: 1px solid;*/
+}
+.mobile-nav{
+    display: none;
+    cursor: pointer;
+}
+
+.mobile-nav div{
+    width: 25px;
+    height: 3px;
+    background-color: aliceblue;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+@media only screen and (max-width: 990px ){
+    nav .logo{
+        font-size: 1.3em;
+        letter-spacing: 3px;
+    }
+    .nav-links{
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 820px ){
+    .mobile-nav{
+        display: block;
+    }
+    .nav-links{
+        position: absolute;
+        left: 0;
+        height: 92vh; 
+        width: 70%;
+        top: 4rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgb(78 65 146);
+        transform: translateX(-100%);
+        transition: transform 0.5s ease-in;
+    }
+     .nav-links li{
+        opacity: 0;
+    }
+}
+.nav-active{
+    transform: translateX(0%);
+}
+@keyframes navlinkfade{
+    from{
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to{
+        opacity: 1;
+        transform: translate(0px);
+    }
+}
+.toggle .line1{
+    transform: rotate(-45deg) translate(-5px,6px);
+}
+.toggle .line2{
+    opacity: 0;
+}
+.toggle .line3{
+    transform: rotate(45deg) translate(-5px,-6px);
+}
+
+/* nav style ends */
+/* This container is used in project and issue page and this container is divided in 2 parts
+    top line and bottom line 
+*/
+.container{
+    background-color: rgb(235 233 243);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.19), 0 3px 5px rgba(0,0,0,.23);
+}
+.top_line{
+    display: flex;
+    justify-content: space-between;
+}
+.bottom_line{
+    display: flex;
+    justify-content: space-around;
+}
+/* add button class is used 2 times for button to create new project and to add member*/
+.add-btn{
+    display: flex;
+    height: 80px;
+    width: 80px;
+    font-size: 40px;
+    background-color: rgb(78 65 146);
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: aliceblue;
+    box-shadow: 0 5px 10px rgba(0,0,0,.19), 0 3px 5px rgba(0,0,0,.23);
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
+/**/
+.add-btn:hover{
+    color: aliceblue;
+}
+/* delete btn prj or issue page me use kiya hai unke naam ke samne*/
+.delete-btn{
+    background-color: transparent;
+    border: none;
+    color: rgb(78 65 146);
+}
+/*this container-1 class is created because above container class background was set.
+this container class gives you margin on both right and left side */
+.container-1{
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+    
+}
+/* inputbox is used in forms*/
+.container-1 .inputbox{
+    width: 80%;
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    height: 40px;
+    border-radius: 5px;
+    border-style: none;
+    padding: 7px;
+    background-color: rgb(235 233 243);
+}
+/* submit button me position use kiya tha toh vo menu ke upar aara tha iss liye margin left kiya
+hai */
+.container-1 .submit-button{
+    width: 7em;
+    height: 40px;
+    margin-top: 20px;
+    border-style: none;
+    border-radius: 20px;
+    background-color: rgb(78 65 146);
+    display: block;
+    margin-left: 53%;
+    font-size: 20px;
+    color: aliceblue;
+}
+/* resolve button is used in issue detail page I have used a tag on resolve button 
+iss liye yeh class create kiya  */
+.resolve-button{
+    width: 7em;
+    height: 40px;
+    margin-top: 20px;
+    border-radius: 20px;
+    background-color: rgb(78 65 146);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    margin-left: 53%;
+    font-size: 20px;
+    color: aliceblue;
+}
+
+/* user div1,  user div2 is usedin div page */
+.container-1 #user-div1{
+    display: flex;
+    height: 15em;
+    justify-content: center;
+    align-items: center;
+   
+}
+.container-1 #user-div2{
+    display: flex;
+    width: 70%;
+    height: 40px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid;
+    border-radius: 25px;
+    
+}
+/* resolve reply is text area tag in rsolve.php file*/
+.container-1 .resolve-reply{
+    width: 100%;
+    margin-top: 20px;
+    padding: 25px;
+    border-radius: 10px;
+}
+/* */
+.user-icon{
+    font-size: 10em;
+}
+/* issue detail link is used on a tag this represent issue name in issue.php file
+this link redirect us on issuedetail.php file*/
+#issue-detail-link{
+    margin: 15px 10;
+    text-decoration: none;
+    color: black;
+}
+@media only screen and (max-width: 578px ){
+    .container {
+        width: 90%;
+    }
+} 
+
+/*login page*/
+
+
+.container-2 .mobile-nav{
+    display: none;
+    
+}
+
+.mainbox{
+	width: 90%;
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+   
+	/*box-shadow: 0 1px 2px rgba(0,0,0,.19), 0 3px 5px rgba(0,0,0,.23);*/
+	color: black;
+}
+.mainbox h1{
+	font-size: 3rem;
+	text-align: center;
+	/*font-family: Arial, Helvetica, sans-serif;*/
+	margin-top: 1rem;
+}
+.inputbox{
+	background: transparent;
+	width: 90%;
+	margin-top: 1.5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+	padding: 8px 0;
+	align-items: center;
+	border: none;
+	outline: none;
+	border-bottom: 2px solid  #3346ad;
+	font-size: 18px;
+	color: black;
+}
+p{
+	margin: 15px 10px;
+}
+.submitbutton{
+	width: 50%;
+	height: 40px;
+	background-color:  rgb(78 65 146);
+	margin-top: 1.5rem;
+	color: aliceblue;
+	font-size: 20px;
+	border: none;
+	border-radius: 7px;
+	outline: none;
+}
+.try{
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.try li{
+	float: left;
+	width: 50%;
+	height: 40px;
+	background: #111;
+}
+.try li a{
+	color: white;
+	text-decoration: none;
+	display: block;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	padding-top: 10px;
+	font-size: 20px;
+}
+.try li:hover{
+	background: none;
+}
+.try li a:hover{
+	color: #32cd32;
+}
+.try li a:selected{
+	color: #32cd32;
+}
+
