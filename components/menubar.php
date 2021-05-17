@@ -4,7 +4,7 @@
     <input type="checkbox" id="show-menu">
     <label for="show-menu" class="menu-icon"><i class="fas fa-bars"></i></label>
     <div class="content">
-      <div class="logo"><a href="#">Bug Tracking System</a></div>
+      <div class="logo"><a href="#">Bug Tracking</a></div>
       <ul class="links">
         <li><a href="#">Projects</a></li>
         <li><a href="#">Issues</a></li>
