@@ -8,7 +8,8 @@
 /* --------- Container Styles --------- */
 .container {
   padding: 2rem;
-  min-height: 100vh;
+  height: 100vh;
+  min-width: 100vw;
 }
 
 /* --------- Form Styles --------- */
@@ -49,44 +50,81 @@
   opacity: 0.9;
 }
 
-.top_line {
+/* --------- Issues Styles --------- */
+.issue-card-container {
+  width: 100%;
+  margin-top: 50px;
   display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.issue-card-container .header {
+  font-size: 1.75rem;
+  color: var(--primary);
+}
+.issue-card {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  border: 1px var(--primary) solid;
+  border-radius: 5px;
 }
-.bottom_line {
+.issue-card .title {
+  font-size: 1.2rem;
+  font-style: bold;
+}
+.issue-card .issue-card-details {
+  width: 100%;
+  padding: 2rem;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  background-color: inherit;
+  gap: 10px;
+  border-radius: inherit;
+  transition: all ease-in-out 200ms;
 }
-/* add button class is used 2 times for button to create new project and to add member*/
+.issue-card .issue-card-details:hover {
+  background-color: var(--secondary);
+}
+.issue-card .issue-card-button {
+  font-size: 1.2rem;
+  width: 75px;
+  height: inherit;
+  background-color: var(--primary);
+  color: var(--secondary);
+  border: none;
+  border-radius: 0 4px 4px 0;
+  transition: all ease-in-out 200ms;
+}
+.issue-card .issue-card-button:hover {
+  background-color: inherit;
+  color: var(--primary);
+}
+
+/* --------- Floating Action Button --------- */
 .add-btn {
-  display: flex;
-  height: 80px;
-  width: 80px;
-  font-size: 40px;
-  background-color: rgb(78 65 146);
-  border-radius: 50%;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  color: aliceblue;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 5px rgba(0, 0, 0, 0.23);
   position: fixed;
   right: 20px;
   bottom: 20px;
-}
-/**/
-.add-btn:hover {
+  font-size: 1.5rem;
+  height: 2.5em;
+  width: 2.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(78 65 146);
   color: aliceblue;
+  border-radius: 50%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 5px rgba(0, 0, 0, 0.23);
+  transition: all ease-in-out 200ms;
 }
-/* delete btn prj or issue page me use kiya hai unke naam ke samne*/
-.delete-btn {
-  background-color: transparent;
-  border: none;
-  color: rgb(78 65 146);
+.add-btn:hover {
+  background-color: var(--secondary);
+  color: var(--primary);
 }
 
-/* submit button me position use kiya tha toh vo menu ke upar aara tha iss liye margin left kiya
-hai */
+/* Old Code */
 .container-1 .submit-button {
   width: 7em;
   height: 40px;
@@ -99,8 +137,7 @@ hai */
   font-size: 20px;
   color: aliceblue;
 }
-/* resolve button is used in issue detail page I have used a tag on resolve button 
-iss liye yeh class create kiya  */
+
 .resolve-button {
   width: 7em;
   height: 40px;
