@@ -1,28 +1,31 @@
 <?php
-    class database_connection {
-        private $servername;
-        private $dbname;
-        private $user; 
-        private $pass;
+class database_connection
+{
+    private $servername;
+    private $dbname;
+    private $user;
+    private $pass;
+    private $dbconn;
 
-        public function __construct()
-        {
-           try {
-                $this->servername = "localhost";
-                $this->dbname = "bug_tracking";
-                $this->user = "root";
-                $this->pass = "";
+    public function __construct()
+    {
+        try {
+            $this->servername = "localhost";
+            $this->dbname = "bug_tracking";
+            $this->user = "root";
+            $this->pass = "";
 
-                $dbcon = new PDO("mysql:host=$this->servername; dbname=$this->dbname",$this->user,$this->pass);
-                $dbcon->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $dbcon->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_ASSOC);
+            $conn = new PDO("mysql:host=$this->servername; dbname=$this->dbname", $this->user, $this->pass);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
-                return $dbcon;
-            } 
-            catch (PDOException $e) {
-               echo "Database Connection failed: ". $e->getMessage();
-            }
-            
+            $this->dbconn = $conn;
+        } catch (PDOException $e) {
+            echo "Database Connection failed: " . $e->getMessage();
         }
-
     }
+
+    public function query($queryString)
+    {
+    }
+}
