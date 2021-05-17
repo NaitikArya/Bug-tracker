@@ -1,0 +1,159 @@
+:root {
+  --primary: rgb(78, 65, 146);
+  --secondary: aliceblue;
+  font-size: 1rem;
+}
+/* --------- Container Styles --------- */
+.container {
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+/* --------- Form Styles --------- */
+.form-container {
+  height: 100%;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.form-container .header {
+  font-size: 1.5rem;
+}
+.form-container .textfield {
+  font-size: inherit;
+  width: 100%;
+  max-width: 300px;
+  height: 50px;
+  border-radius: 5px;
+  border-style: solid;
+  padding: 25px;
+}
+.form-container .submit-btn {
+  font-size: inherit;
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--primary);
+  color: var(--secondary);
+  transition: all ease-in-out 200ms;
+}
+.form-container .submit-btn:hover {
+  opacity: 0.9;
+}
+
+.top_line {
+  display: flex;
+  justify-content: space-between;
+}
+.bottom_line {
+  display: flex;
+  justify-content: space-around;
+}
+/* add button class is used 2 times for button to create new project and to add member*/
+.add-btn {
+  display: flex;
+  height: 80px;
+  width: 80px;
+  font-size: 40px;
+  background-color: rgb(78 65 146);
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: aliceblue;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 5px rgba(0, 0, 0, 0.23);
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+/**/
+.add-btn:hover {
+  color: aliceblue;
+}
+/* delete btn prj or issue page me use kiya hai unke naam ke samne*/
+.delete-btn {
+  background-color: transparent;
+  border: none;
+  color: rgb(78 65 146);
+}
+
+/* submit button me position use kiya tha toh vo menu ke upar aara tha iss liye margin left kiya
+hai */
+.container-1 .submit-button {
+  width: 7em;
+  height: 40px;
+  margin-top: 20px;
+  border-style: none;
+  border-radius: 20px;
+  background-color: rgb(78, 65, 146);
+  display: block;
+  margin-left: 53%;
+  font-size: 20px;
+  color: aliceblue;
+}
+/* resolve button is used in issue detail page I have used a tag on resolve button 
+iss liye yeh class create kiya  */
+.resolve-button {
+  width: 7em;
+  height: 40px;
+  margin-top: 20px;
+  border-radius: 20px;
+  background-color: rgb(78 65 146);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  margin-left: 53%;
+  font-size: 20px;
+  color: aliceblue;
+}
+
+/* user div1,  user div2 is usedin div page */
+.container-1 #user-div1 {
+  display: flex;
+  height: 15em;
+  justify-content: center;
+  align-items: center;
+}
+.container-1 #user-div2 {
+  display: flex;
+  width: 70%;
+  height: 40px;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
+  justify-content: space-between;
+  border: 2px solid;
+  border-radius: 25px;
+}
+/* resolve reply is text area tag in rsolve.php file*/
+.container-1 .resolve-reply {
+  width: 100%;
+  margin-top: 20px;
+  padding: 25px;
+  border-radius: 10px;
+}
+/* */
+.user-icon {
+  font-size: 10em;
+}
+/* issue detail link is used on a tag this represent issue name in issue.php file
+this link redirect us on issuedetail.php file*/
+#issue-detail-link {
+  text-decoration: none;
+  color: black;
+}
+@media only screen and (max-width: 578px) {
+  .container {
+    width: 90%;
+  }
+}
