@@ -1,33 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="../styles/globals.css">
+    <link rel="stylesheet" href="../styles/navbar.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <title>User</title>
 </head>
+
 <body>
-    <?php include 'menubar.php';?>
-    <div class="container-1" >
-        <div id="user-div1">
-            <span class="material-icons user-icon"> person_outline</span>
-            
+    <?php include '../components/menubar.php'; ?>
+    <div class="container">
+        <div class="user-container">
+            <div class="image">
+                <i class="fas fa-user"> </i>
+            </div>
+            <div class="details">
+                <div>
+                    <div class="title">Project assigned</div>
+                    <div>20</div>
+                </div>
+                <div>
+                    <div class="title">Issue Assigned</div>
+                    <div>20</div>
+                </div>
+                <div>
+                    <div class="title">Issue solved</div>
+                    <div>20</div>
+                </div>
+            </div>
         </div>
-        
-        <div id="user-div2">
-            <p>Project assigned</p>
-            <p>20</p>
-        </div>
-        <div id="user-div2">
-            <p>issue assihned</p>
-            <p>20</p>
-        </div>
-        <div id="user-div2">
-            <p>Issue solved</p>
-            <p>20</p>
-        </div>
-        
-        
     </div>
 </body>
+
 </html>
