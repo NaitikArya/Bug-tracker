@@ -1,7 +1,9 @@
 :root {
   --primary: rgb(78, 65, 146);
   --secondary: aliceblue;
+  --bg-primary: rgb(235 233 243);
   font-size: 1rem;
+  background-color: var(--bg-primary);
 }
 /* --------- Container Styles --------- */
 .container {
