@@ -1,3 +1,8 @@
+<?php
+include_once("../helper/connection.php");
+$dbconn = new Connection();
+$issues = $dbconn->select("SELECT * FROM issues");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,24 +24,31 @@
             <div class="header">
                 Issues
             </div>
+            <!-- Creating Issue Cards -->
             <?php
-            $a = array(10, 9, 8, 7, 6, 5, 4, 3, 2, 1);
             $issue = 'Issue Name';
-            foreach ($a as $value) {
+            foreach ($issues as $issue) {
             ?>
-                <div class="card">
-                    <div class="card-details">
+                <form type="GET" action="../components/issues/issuedetail.php" class="card">
+                    <div onClick="javascript:this.parentNode.submit();" class="card-details">
+                        <!-- Issue Id -->
+                        <?php
+                        echo "<input type='hidden' name='issueId' value='", $issue['issueId'], "'>"
+                        ?>
+                        <!-- Issue Name -->
                         <div class="title" href="issuedetail.php">
-                            <?php echo $issue ?>
+                            <?php echo $issue['issue_name'] ?>
                         </div>
-                        <div class="start-date">Start:dd/mm/yy</div>
-                        <div class="end-date">End:dd/mm/yy</div>
+                        <!-- Issue Start Date -->
+                        <div class="start-date">Start:
+                            <?php echo $issue['startDate'] ?>
+                        </div>
+                        <!-- Issue End Date -->
+                        <div class="end-date">End:
+                            <?php echo $issue['endDate'] ?>
+                        </div>
                     </div>
-                    <button class="card-button">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                    </button>
-                </div>
+                </form>
             <?php
             }
             ?>
