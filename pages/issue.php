@@ -53,7 +53,7 @@ $issues = $dbconn->select("SELECT * FROM issues");
             }
             ?>
         </div>
-        <a href="addissue.php" class="add-btn">
+        <a href="../components/issues/addissue.php" class="add-btn">
             <i class="fas fa-sm fa-plus"></i></a>
     </div>
 </body>
