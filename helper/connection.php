@@ -1,5 +1,5 @@
 <?php
-class database_connection
+class Connection
 {
     private $servername;
     private $dbname;
@@ -25,7 +25,26 @@ class database_connection
         }
     }
 
-    public function query($queryString)
+    public function updateData($queryString)
     {
+        try {
+            $this->dbconn->exec($queryString);
+        } catch (\Throwable $th) {
+            echo "Update Table Failed: ", $th->getMessage();
+        }
+    }
+
+    public function select($queryString)
+    {
+        try {
+            $stmt =  $this->dbconn->prepare($queryString);
+            $stmt->execute();
+
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+            return $stmt->fetchAll();
+        } catch (\Throwable $th) {
+            echo "Select Failed: ", $th->getMessage();
+        }
     }
 }
