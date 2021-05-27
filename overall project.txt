@@ -25,8 +25,8 @@ Database table ->
             6. issue assign to
             7. status
 
-create table user(userId int primary key, username varchar(100) not null, email varchar(255) not null,password BINARY(64)not null, projects int[]);
+create table users(userId int primary key, username varchar(100) not null, email varchar(255) not null,password BINARY(64)not null, projects int[]);
 
 create table projects(projectId int primary key, project_name varchar(100) not null, startDate Date not null,endDate Date, admin int not null );
 
-create table issues(issueId int primary key, issue_name varchar(100)not null, issue_summary varchar(255),startDate date not null, endDate date not null, priority int not null, status varchar(10), assignedT
+create table issues(issueId int primary key, issue_name varchar(100)not null, issue_summary varchar(255),startDate date not null, endDate date not null, priority int not null, status varchar(10), assignedTo int);
