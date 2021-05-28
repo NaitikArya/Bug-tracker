@@ -1,3 +1,36 @@
+<?php
+
+include_once("../../helper/connection.php");
+
+$issue  = [
+    "issue_name" => "",
+    "startDate" => "",
+    "endDate" => "",
+    "priority" => "",
+    "issue_summary" => ""
+];
+
+$issueId = -1;
+
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    if (isset($_GET["issueId"])) {
+        $conn = new Connection();
+
+        $issueId = $_GET["issueId"];
+
+        $result = $conn->select("SELECT issueId, issue_name, startDate, endDate, priority, issue_summary FROM Issues WHERE issueId=$issueId");
+
+        if (count($result) > 0) {
+            $issue["issue_name"] = $result[0]["issue_name"];
+            $issue["startDate"] = $result[0]["startDate"];
+            $issue["endDate"] = $result[0]["endDate"];
+            $issue["priority"] = $result[0]["priority"];
+            $issue["issue_summary"] = $result[0]["issue_summary"];
+        }
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,33 +46,61 @@
 
 <body>
 
-    <?php include '../menubar.php'; ?>
+    <?php include_once('../menubar.php'); ?>
 
     <div class="container">
-        <p style="display:inline;">
-            <span>Issue Name : </span>
-            <span style="margin-left: 1rem; color: rgb(78 65 146);">Issue Name</span>
-        </p>
-        <br>
-        <p style=" display:inline;">
-            <span>Start Date : </span>
-            <span style="margin-left: 1.7rem;color: rgb(78 65 146);">Start date</span>
-        </p>
-        <br>
-        <p style="display:inline;">
-            <span>End Date : </span>
-            <span style="margin-left: 2rem; color: rgb(78 65 146);">End Date</span>
-        </p>
-        <br>
-        <p style="display:inline;">
-            <span>Priority : </span>
-            <span style="margin-left: 2.9rem; color: rgb(78 65 146);">Priority</span>
-        </p>
-        <br>
-        <p>Issue Summary</p>
-        <p style="color: rgb(78 65 146);">A bug tracking system or defect tracking system is a software application that keeps track of reported software bugs in software development projects. It may be regarded as a type of issue tracking system.</p>
-        <br>
-        <a href="resolve.php" class="resolve-button"> Resolve</a>
+        <table class="display-data-container">
+            <form action="resolve.php" method="get">
+                <?php
+                echo "<input type='hidden' name='id' value='$issueId'>"
+                ?>
+                <tr>
+                    <th>Issue Name</th>
+                    <td>
+                        <?php
+                        echo $issue["issue_name"];
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Start Date</th>
+                    <td>
+                        <?php
+                        echo $issue["startDate"];
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th>End Date</th>
+                    <td>
+                        <?php
+                        echo $issue["endDate"];
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Priority</th>
+                    <td>
+                        <?php
+                        echo $issue["priority"] == 0 ? "Low" : ($issue["priority"] == 1 ? "Medium" : "High");
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Issue Summary</th>
+                    <td>
+                        <?php
+                        echo $issue["issue_summary"];
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <button type="submit" class="btn"> Resolve</button>
+                    </td>
+                </tr>
+            </form>
+        </table>
     </div>
 
 </body>
