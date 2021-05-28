@@ -15,21 +15,21 @@
     <?php include '../menubar.php'; ?>
 
     <div class="container">
-        <form class="form-container" action="">
+        <form class="form-container" action="addissue.php">
             <div class="header">New Issue</div>
 
             <!-- Issue Name -->
-            <input type="text" placeholder="Issue Name" name="" class="textfield">
+            <input type="text" placeholder="Issue Name" name="issueName" class="textfield">
 
             <!-- Issue Start Date -->
-            <input type="text" onfocus="(this.type='date')" placeholder="Start Date" name="" class="textfield">
+            <input type="text" onfocus="(this.type='date')" placeholder="Start Date" name="startDate" class="textfield">
 
             <!-- Issue End Date -->
-            <input type="text" onfocus="(this.type='date')" placeholder="End Date" name="" class="textfield">
+            <input type="text" onfocus="(this.type='date')" placeholder="End Date" name="endDate" class="textfield">
 
             <!-- Issue Priority -->
             <div class="combo-box">
-                <select name="">
+                <select name="priority">
                     <option value="">Select Priority</option>
                     <option value="low">Low</option>
                     <option value="medium">Medium</option>
@@ -38,7 +38,7 @@
             </div>
 
             <!-- Issue Summary -->
-            <textarea rows="4" class="textarea" placeholder="Issue Summary"></textarea>
+            <textarea rows="4" name="summary" class="textarea" placeholder="Issue Summary"></textarea>
 
             <!-- Submit Button -->
             <button class="submit-btn">Submit</button>
