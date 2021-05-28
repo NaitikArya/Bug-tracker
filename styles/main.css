@@ -212,6 +212,39 @@ select:focus + .focus {
   background-color: var(--secondary);
   color: var(--primary);
 }
+/* --------- Display Data --------- */
+.display-data-container {
+  width: 100%;
+  margin-top: 50px;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.display-data-container th {
+  color: var(--primary);
+}
+
+.display-data-container th,
+.display-data-container td {
+  padding: 20px;
+}
+
+/* --------- Button --------- */
+.btn {
+  display: block;
+  font-size: inherit;
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--primary);
+  color: var(--secondary);
+  transition: all ease-in-out 200ms;
+}
+.btn:hover {
+  opacity: 0.9;
+}
 
 /* --------- Old Code --------- */
 .user-container {
@@ -285,16 +318,19 @@ select:focus + .focus {
   padding: 25px;
   border-radius: 10px;
 }
+
 /* */
 .user-icon {
   font-size: 10em;
 }
+
 /* issue detail link is used on a tag this represent issue name in issue.php file
 this link redirect us on issuedetail.php file*/
 #detail-link {
   text-decoration: none;
   color: black;
 }
+
 @media only screen and (max-width: 578px) {
   .container {
     width: 90%;
