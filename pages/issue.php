@@ -1,7 +1,7 @@
 <?php
 include_once("../helper/connection.php");
 $dbconn = new Connection();
-$issues = $dbconn->select("SELECT * FROM issues");
+$issues = $dbconn->select("SELECT * FROM issues WHERE status=0");
 ?>
 <!DOCTYPE html>
 <html lang="en">
