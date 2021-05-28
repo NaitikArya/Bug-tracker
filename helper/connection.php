@@ -25,6 +25,15 @@ class Connection
         }
     }
 
+    public function insertData($queryString)
+    {
+        try {
+            $this->dbconn->exec($queryString);
+        } catch (\Throwable $th) {
+            echo "Insert Data Failed: ", $th->getMessage();
+        }
+    }
+
     public function updateData($queryString)
     {
         try {
