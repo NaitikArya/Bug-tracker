@@ -14,7 +14,7 @@ if ($result->rowCount() >= 0) {
 	while ($row = $result->fetch()) {
 		//echo "username ".$row["username"]."<br>";
 		if ($row["username"] == $user && $row["passwords"] == $password) {
-			$_SESSION['user_name']="$user";
+			$_SESSION['user_name']="$user"; // Storing user name in session
 			echo "login successful<br>";
 			header("Location: components/project/project.php");
 
