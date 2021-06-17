@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         <table class="display-data-container">
             <form action="resolve.php" method="get">
                 <?php
-                echo "<input type='hidden' name='id' value='$issueId'>"
+                echo "<input type='hidden' name='issueId' value='$issueId'>"
                 ?>
                 <tr>
                     <th>Issue Name</th>
@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <button type="submit" class="btn"> Resolve</button>
+                        <button type="submit" class="btn">Resolve</button>
                     </td>
                 </tr>
             </form>

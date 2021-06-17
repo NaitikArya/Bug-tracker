@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../styles/globals.css" />
+    <link rel="stylesheet" href="../../styles/main.css" />
+    <link rel="stylesheet" href="../../styles/navbar.css" />
+  </head>
+
+  <body>
+    <form class="form-container" action="addproject.php" method="POST">
+      <div class="header">New Project</div>
+      <!-- Project Name -->
+      <input
+        type="text"
+        placeholder="Project Name"
+        name="projectName"
+        class="textfield"
+      />
+
+      <!-- Project Start Date -->
+      <input
+        type="text"
+        onfocus="(this.type='date')"
+        placeholder="Start Date"
+        name="startDate"
+        class="textfield"
+      />
+
+      <!-- Project End Date -->
+      <input
+        type="text"
+        onfocus="(this.type='date')"
+        placeholder="End Date"
+        name="endDate"
+        class="textfield"
+      />
+
+      <button class="submit-btn">Submit</button>
+    </form>
+  </body>
+</html>

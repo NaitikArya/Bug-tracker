@@ -1,7 +1,20 @@
 <?php
 include_once("../helper/connection.php");
 $dbconn = new Connection();
-$issues = $dbconn->select("SELECT * FROM issues WHERE status=0");
+
+$issues = [];
+$projectIds;
+
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['projectId'])) {
+    $issues = $dbconn->select("SELECT * FROM issues WHERE status=0 AND projectId IN (" . $_GET['projectId'] . ");");
+    $projectIds = [["projects" => $_GET['projectId']]];
+} else {
+    $projectIds = $dbconn->select("SELECT projects FROM users WHERE username='" . $_SESSION['userName'] . "';");
+    $projects = [];
+    if (isset($projectIds[0]['projects'])) {
+        $issues = $dbconn->select("SELECT * FROM issues WHERE status=0 AND projectId IN (" . $projectIds[0]['projects'] . ");");
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,6 +43,9 @@ $issues = $dbconn->select("SELECT * FROM issues WHERE status=0");
             foreach ($issues as $issue) {
             ?>
                 <form type="GET" action="../components/issues/issuedetail.php" class="card">
+                    <input type="hidden" name="projectIds" <?php
+                                                            echo "value=" . $projectIds[0]['projects'];
+                                                            ?>>
                     <div onClick="javascript:this.parentNode.submit();" class="card-details">
                         <!-- Issue Id -->
                         <?php
@@ -53,7 +69,7 @@ $issues = $dbconn->select("SELECT * FROM issues WHERE status=0");
             }
             ?>
         </div>
-        <a href="../components/issues/addissue.html" class="add-btn">
+        <a href="../components/issues/addissueform.php" class="add-btn">
             <i class="fas fa-sm fa-plus"></i></a>
     </div>
 </body>

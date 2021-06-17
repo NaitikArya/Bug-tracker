@@ -1,3 +1,28 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	include '../helper/connection.php';
+	$obj = new Connection();
+
+	$user = $_POST['username'];
+	$password = md5($_POST['password']);
+	$select = "SELECT userId, username, password FROM users WHERE username='$user' AND password='$password';";
+
+	$result = $obj->select($select);
+	if (count($result) > 0) {
+		$row = $result[0];
+		if ($row["username"] == $user && $row["password"] == $password) {
+			session_start();
+			$_SESSION['userId'] = $row["userId"];
+			$_SESSION['userName'] = $row["username"];
+
+			echo "Login Successful<br>";
+			header("Location: ./project.php");
+		}
+	} else {
+		echo "<script>alert('Invalid user name or password')</script>";
+	}
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +37,7 @@
 
 <body>
 	<div class="container">
-		<form action="signin.php" method="post" class="form-container">
+		<form action="login.php" method="post" class="form-container">
 			<div class="header">
 				<h1>Login</h1>
 			</div>

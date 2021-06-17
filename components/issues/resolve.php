@@ -1,3 +1,24 @@
+<?php
+include_once("../../helper/connection.php");
+
+$dbconn = new Connection();
+$issueId;
+
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $issueId = $_GET["issueId"];
+} else if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $resolveReply = $_POST["resolveReply"];
+    $issueId = $_POST["issueId"];
+    $resolverId = $_SESSION["userId"];
+
+    $dbconn->insertData("INSERT INTO resolved(resolve_reply, issueId, resolverId) VALUES ('$resolveReply', $issueId, $resolverId);");
+
+    $dbconn->dbconn->exec("UPDATE issues SET status=1 WHERE issueId=$issueId;");
+
+    header("Location: ../../pages/issue.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,12 +36,12 @@
 
     <?php include '../menubar.php'; ?>
     <div class="container">
-        <form action="" class="form-container">
+        <form method="POST" action="resolve.php" class="form-container">
             <div class="header">
                 Resolve
             </div>
-
-            <textarea class="textarea" placeholder="Resolve Reply"></textarea>
+            <input type="hidden" name="issueId" value=<?php echo "$issueId" ?>>
+            <textarea name="resolveReply" class="textarea" placeholder="Resolve Reply"></textarea>
             <button class="submit-btn">Send</button>
 
         </form>

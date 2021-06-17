@@ -1,3 +1,14 @@
+<?php
+include_once("../helper/connection.php");
+
+$userId = $_SESSION["userId"];
+$conn = new Connection();
+
+$projectIds = $conn->select("SELECT projects FROM users WHERE userId=$userId;")[0]["projects"];
+
+$issues = $conn->select("SELECT * FROM issues WHERE projectId IN ($projectIds)");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,17 +33,17 @@
             </div>
             <div class="details">
                 <div>
-                    <div class="title">Project assigned</div>
-                    <div>20</div>
+                    <div class="title">Projects</div>
+                    <div><?php echo count(explode(",", $projectIds)); ?></div>
                 </div>
                 <div>
-                    <div class="title">Issue Assigned</div>
-                    <div>20</div>
+                    <div class="title">Issues</div>
+                    <div><?php echo count($issues); ?></div>
                 </div>
-                <div>
+                <!-- <div>
                     <div class="title">Issue solved</div>
-                    <div>20</div>
-                </div>
+                    <div></div>
+                </div> -->
             </div>
         </div>
     </div>

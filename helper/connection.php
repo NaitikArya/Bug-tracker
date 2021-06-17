@@ -6,7 +6,7 @@ class Connection
     private $dbname;
     private $user;
     private $pass;
-    private $dbconn;
+    public $dbconn;
 
     public function __construct()
     {

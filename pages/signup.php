@@ -1,46 +1,28 @@
 <?php
 // from this file User can register him/her self in our application  
-if (isset($_POST['submit'])) {
-    include 'connection.php';
-    $obj = new database_connection();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    include '../helper/connection.php';
+    $obj = new Connection();
 
     $user_name = $_POST['username'];
-    $email = $_POST['Email'];
+    $email = $_POST['email'];
     $password = md5($_POST['password']);
 
 
-
-    //select statement to check if user name is repeated
-
-    $select = "SELECT username FROM user";
-    $result = $obj->query($select);
-    if ($result->rowCount() >= 0) {
-        while ($row = $result->fetch()) {
-            //echo "m_email ".$row["m_email"]."<br>";
-            if ($row["username"] == $user_name) {
-                echo "<script> alert('Someone have already registerd with this user name.') </script> ";
-                exit();
-            }
+    $select = "SELECT username FROM users";
+    $result = $obj->select($select);
+    if (count($result) > 0) {
+        if ($row[0]["username"] == $user_name) {
+            echo "<script> alert('Someone have already registerd with this user name.') </script>";
+            exit();
         }
     }
 
-    $insert = "INSERT INTO user(username, email, passwords) 
+    $insert = "INSERT INTO users(username, email, password) 
              VALUES('$user_name', '$email', '$password')";
 
-    if ($obj->query($insert)) {
+    if ($obj->insertData($insert)) {
         echo " <script> alert(' New record created successfully') </script>";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-
-    //send mail code
-    $subject = "Registration successful";
-    $message = "Welcome to our page. <br> thank u";
-    $from = "From: Bug tracker";
-    if (mail($email, $subject, $message, $from)) {
-        //echo "mail send successfully";
-    } else {
-        //echo "Error: Cannot send mail";
     }
 }
 ?>
@@ -66,7 +48,7 @@ if (isset($_POST['submit'])) {
             <input type="text" placeholder="Username" name="username" class="textfield" required>
 
             <!-- Email -->
-            <input type="Email" placeholder="Email" class="textfield" name="Email" required>
+            <input type="email" placeholder="Email" class="textfield" name="email" required>
 
             <!-- Password -->
             <input type="password" placeholder="Password" class="textfield" name="password" required>

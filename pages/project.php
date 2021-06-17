@@ -1,3 +1,12 @@
+<?php
+include_once("../helper/connection.php");
+$dbconn = new Connection();
+$projectIds = $dbconn->select("SELECT projects FROM users WHERE username='" . $_SESSION['userName'] . "';");
+$projects = [];
+if (isset($projectIds[0]['projects'])) {
+    $projects = $dbconn->select("SELECT projectId, project_name, startDate, endDate FROM projects WHERE projectId IN (" . $projectIds[0]['projects'] . ");");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,45 +14,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-    <!-- CSS only -->
     <link rel="stylesheet" href="../styles/globals.css">
     <link rel="stylesheet" href="../styles/navbar.css">
     <link rel="stylesheet" href="../styles/main.css">
-    <title>Project</title>
 </head>
 
 <body>
-
     <?php include '../components/menubar.php'; ?>
+
     <div class="container">
         <div class="card-container">
             <div class="header">
                 Project
             </div>
+
+            <!-- Creating Project Cards -->
             <?php
-            $a = array(10, 9, 8, 7, 6, 5, 4, 3, 2, 1);
-            $issue = 'Project Name';
-            foreach ($a as $value) {
+            if (count($projects) > 0) {
+                foreach ($projects as $project) {
             ?>
-                <div class="card">
-                    <div class="card-details">
-                        <div class="title" href="issuedetail.php">
-                            <?php echo $issue . $value ?>
+                    <form type="GET" action="./issue.php" class="card">
+                        <div onClick="javascript:this.parentNode.submit();" class="card-details">
+                            <!-- Project Id -->
+                            <?php
+                            echo "<input type='hidden' name='projectId' value='", $project['projectId'], "'>"
+                            ?>
+                            <!-- Project Name -->
+                            <div class="title">
+                                <?php echo $project['project_name'] ?>
+                            </div>
+                            <!-- Project Start Date -->
+                            <div class="start-date">Start:
+                                <?php echo $project['startDate'] ?>
+                            </div>
+                            <!-- Project End Date -->
+                            <div class="end-date">End:
+                                <?php echo $project['endDate'] ?>
+                            </div>
                         </div>
-                        <div class="start-date">Start:dd/mm/yy</div>
-                        <div class="end-date">End:dd/mm/yy</div>
-                    </div>
-                    <button class="card-button">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                    </button>
-                </div>
+                    </form>
             <?php
+                }
+            } else {
+                echo "No Projects.";
             }
             ?>
         </div>
-        <a href="addissue.php" class="add-btn">
+        <a href="../components/project/addproject.html" class="add-btn">
             <i class="fas fa-sm fa-plus"></i></a>
     </div>
 
